@@ -1,5 +1,7 @@
 # dsh-harness-mcp-server
 
+> **Fork for DeepSeek Harness 0.2.1-rc.4.** See the fork notes in [README.zh-CN.md](./README.zh-CN.md). Upstream: [chushixixin/dsh-harness-mcp-server](https://github.com/chushixixin/dsh-harness-mcp-server).
+
 > Expose [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) agent capabilities as an **MCP server**, letting any MCP client (e.g. [Hermes](https://hermes-agent.nousresearch.com/)) drive Harness to execute real coding tasks.
 
 **Hermes is the brain (pro), Harness is the arms (flash) — 1+1>2.**

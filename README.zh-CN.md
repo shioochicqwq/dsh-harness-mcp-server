@@ -119,3 +119,23 @@ printf 'n\nY\n' | hermes mcp add harness_plugin --url http://127.0.0.1:8090/mcp
 ## License
 
 MIT
+
+## 本 fork 说明（0.1.10-rc4.2）
+
+基于 `@chushixixin/dsh-harness-mcp-server` 0.1.10（MIT），适配 DeepSeek Harness 0.2.1-rc.4。可执行入口是
+`lib/index.js`，本 fork 不含上游的 `src/`。
+
+与上游的差异：
+
+- 去掉写死的 0.0.1-rc.1 依赖，`@deepseek-ai/*` 全部由 Harness 提供。上游的依赖会导致 0.2.x 启动失败。
+- 模型默认跟随 Harness 当前默认模型；配置 `provider` / `model` 可覆盖。
+- 新会话默认使用 Auto review（`permissionPreset: auto`），审批策略为 `never`：审查拒绝即最终结果，任务不会挂起等人。
+  需要在 profile 里安装 `@deepseek-ai/dsh-experimental-auto-review`；未安装时保留 Harness 默认权限并告警。
+- MCP 会话隐藏 `ask_user_question`，因为没有人回答。
+- `harness_list_tools` 列出预设实际可用的工具，按来源分组并附一句话说明；超过 20 个工具的 MCP server 默认折叠，
+  传 `group` 展开，传 `format: "json"` 取结构化数据。
+- 任务失败时返回 `error`（`agent_run` 同时标记 `isError`），不再显示为成功。
+- 启动时不再自动改动工作区分组；需要时设 `reattachOrphans: true`。
+
+默认不要求口令，只监听 `127.0.0.1:8090`。本机任何进程都能通过它让 agent 执行命令，如需限制请配置 `authToken`；
+改监听其他地址前务必配置。

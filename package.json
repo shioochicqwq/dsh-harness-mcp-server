@@ -1,19 +1,16 @@
 {
-  "name": "@chushixixin/dsh-harness-mcp-server",
-  "version": "0.1.10",
-  "description": "Expose DeepSeek Harness agent capabilities as an MCP server, so an external MCP client (e.g. Hermes) can drive Harness to execute coding tasks. Hermes = brain, Harness = arms.",
+  "name": "@local/dsh-harness-mcp-server",
+  "version": "0.1.10-rc4.2",
+  "description": "Local fork of @chushixixin/dsh-harness-mcp-server for DeepSeek Harness 0.2.1-rc.4. Expose DeepSeek Harness agent capabilities as an MCP server, so an external MCP client (e.g. Hermes) can drive Harness to execute coding tasks. Hermes = brain, Harness = arms.",
   "type": "module",
   "main": "lib/index.js",
-  "types": "lib/types/index.d.ts",
   "files": [
     "lib",
-    "src",
     "cordis.yml",
-    "README.md"
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
   ],
-  "scripts": {
-    "build": "tsc -b && tsdown --env.DSH_BUILD_FACE host"
-  },
   "keywords": [
     "deepseek-harness",
     "dsh-plugin",
@@ -24,11 +21,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chushixixin/dsh-harness-mcp-server.git"
+    "url": "git+https://github.com/shioochicqwq/dsh-harness-mcp-server.git"
   },
-  "homepage": "https://github.com/chushixixin/dsh-harness-mcp-server#readme",
+  "homepage": "https://github.com/shioochicqwq/dsh-harness-mcp-server#readme",
   "bugs": {
-    "url": "https://github.com/chushixixin/dsh-harness-mcp-server/issues"
+    "url": "https://github.com/shioochicqwq/dsh-harness-mcp-server/issues"
   },
   "dsh": {
     "bundle": {
@@ -37,16 +34,15 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/cordis": "^4.0.1",
-    "@deepseek-ai/dsh-tools": "^0.0.1-rc.1",
-    "@deepseek-ai/dsh-llm": "^0.0.1-rc.1",
-    "@deepseek-ai/dsh-agent": "^0.1.0-rc.6",
-    "@deepseek-ai/dsh-session": "^0.0.1-rc.1",
-    "@deepseek-ai/dsh-agent-presets": "^0.0.1-rc.1",
     "@modelcontextprotocol/sdk": "^1.29.0",
     "zod": "^4.4.3"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "^4.0.1"
-  }
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/dsh-llm": "*",
+    "@deepseek-ai/dsh-session": "*",
+    "@deepseek-ai/dsh-agent": "*",
+    "@deepseek-ai/dsh-scope": "*"
+  },
+  "private": true
 }
